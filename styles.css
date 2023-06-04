@@ -10,15 +10,19 @@ body {
   }
   
   .left-image {
+    width: 100px; 
+    height: auto;
     margin-right: 10px;
-    width: 100px; /* Adjust the width as per your preference */
-  height: auto; /* Maintain the aspect ratio */
+    margin-top: 10px; 
+    margin-left: 10px; 
   }
   
   .right-image {
-    margin-left: 10px;
-    width: 20px; /* Adjust the width as per your preference */
-  height: auto; /* Maintain the aspect ratio */
+    width: 20px;
+  height: auto;
+  margin-right: 10px;
+    margin-top: 10px; 
+    margin-left: 10px; 
   }
   
   .search-bar {
@@ -29,7 +33,7 @@ body {
   }
   
   .search-bar input {
-    width: 200px; /* Adjust the width as per your preference */
+    width: 200px;
     padding: 5px;
     font-size: 16px;
   }
