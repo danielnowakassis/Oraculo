@@ -1,4 +1,5 @@
-body {
+/* font-family: 'BlinkMacSystemFont'; */
+  body {
     margin: 0;
     padding: 0;
     background-color: #efefef;
@@ -7,39 +8,51 @@ body {
   .container {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    margin-top: 1em; 
   }
   
   .left-image {
-    width: 100px; 
+    width: 10em; 
     height: auto;
-    margin-right: 10px;
-    margin-top: 10px; 
-    margin-left: 10px; 
+    margin-right: 1em;
+    margin-left: 3em; 
   }
   
   .right-image {
-    width: 20px;
-  height: auto;
-  margin-right: 10px;
-    margin-top: 10px; 
-    margin-left: 10px; 
+    width: 2em;
+    height: auto;
+    margin-right: 2em;
   }
   
   .search-bar {
-    flex-grow: 1;
+    width: 32em;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    background: #D9D9D9;
+    padding: 0.2em;
   }
   
   .search-bar input {
+    display: flex;
+    flex-grow: 1;
+    border: none;
+    background: none;
     width: 200px;
     padding: 5px;
-    font-size: 16px;
+    font-size: 20px;
+    margin-left: 1em; 
+    font-family: 'BlinkMacSystemFont';
   }
   
   .search-bar button {
     padding: 5px 10px;
     font-size: 16px;
+    border: none;
+    background: #D9D9D9;
+  }
+  .search-icon {
+    width: 2em;
   }
   
