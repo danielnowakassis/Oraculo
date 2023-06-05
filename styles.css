@@ -138,3 +138,7 @@ button {
 .indicator-list li:hover {
   text-decoration: underline;
 }
+
+.indicator-list li.active {
+  color: #BCD7EF;
+}

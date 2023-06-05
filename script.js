@@ -1,11 +1,17 @@
-getDataFromDatasets()
+var mainContainer = document.querySelector('main');
+var datasetsPerPage = 5;
+var datasetsSize;
+var currentPage = 1;
+var pageIndicatorsContainer;
+var datasets;
 
 function getDataFromDatasets(){
-    fetch('datasets.json')
+    return fetch('datasets.json')
         .then(response => response.json())
         .then(data => {
-        console.log(data)
-        populateDatasetList(data)
+        datasets = data
+        populateDatasetList(datasets);
+        showDatasets(currentPage, datasets);
     })
         .catch(error => {
         console.error('Error:', error);
@@ -27,9 +33,42 @@ function generateIEEEReference(dataset) {
 }
 
 function populateDatasetList(datasets){
+    datasetsSize = datasets.length;
+    let totalPages = Math.ceil(datasetsSize / datasetsPerPage);
+
+    pageIndicatorsContainer = document.createElement('div');
+    pageIndicatorsContainer.classList.add('page-indicators');
+
+    let indicatorList = document.createElement('ul');
+    indicatorList.classList.add('indicator-list');
+
+    
+    for (var i = 1; i <= totalPages; i++) {
+        var indicatorItem = document.createElement('li');
+        indicatorItem.textContent = i;
+        indicatorItem.addEventListener('click', handleIndicatorClick);
+        indicatorList.appendChild(indicatorItem);
+    }
+    pageIndicatorsContainer.appendChild(indicatorList);
+    mainContainer.appendChild(pageIndicatorsContainer);
+    updateActiveIndicator();
+    showDatasets(currentPage, datasets);
+}
+
+function showDatasets(page, datasets) {
     var datasetsContainer = document.querySelector('.datasets-list');
 
-    datasets.forEach(function(dataset) {
+    datasetsContainer.innerHTML = "";
+
+    var datasetListTitle = document.createElement('h1');
+    datasetListTitle.classList.add('dataset-list-title');
+    datasetListTitle.textContent = 'Datasets';
+    datasetsContainer.appendChild(datasetListTitle);
+
+    var startIndex = (page - 1) * datasetsPerPage;
+    var endIndex = startIndex + datasetsPerPage;
+    for (let i = startIndex; i < endIndex && i < datasetsSize; i++) {
+        let dataset = datasets[i];
         var datasetContainer = document.createElement('div');
         datasetContainer.classList.add('dataset-container');
     
@@ -91,6 +130,27 @@ function populateDatasetList(datasets){
         dropdownButton.addEventListener('click', function () {
             var div = this.parentNode.nextElementSibling;
             div.classList.toggle('hidden');
-          });
-      });
+        });
+    };
 }
+
+
+function updateActiveIndicator() {
+    var indicators = pageIndicatorsContainer.querySelectorAll('.indicator-list li');
+    indicators.forEach(function (indicator) {
+      indicator.classList.remove('active');
+    });
+    indicators[currentPage - 1].classList.add('active');
+}
+
+function handleIndicatorClick(event) {
+    var targetPage = parseInt(event.target.textContent);
+    if (targetPage !== currentPage) {
+        currentPage = targetPage;
+
+        updateActiveIndicator();
+        showDatasets(currentPage, datasets);
+    }
+}
+
+getDataFromDatasets()
