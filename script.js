@@ -67,8 +67,29 @@ function showDatasets(page, datasets) {
 
     var startIndex = (page - 1) * datasetsPerPage;
     var endIndex = startIndex + datasetsPerPage;
+
+    var searchBarInput = document.querySelector('.search-bar input');
+
+    var filterValue = searchBarInput.value.toLowerCase();
+
+    var filteredDatasets = filterValue
+        ? datasets.filter(function(dataset) {
+            var datasetTitle = dataset.title.toLowerCase();
+            var datasetAuthors = dataset.authors.map(author => author.toLowerCase());
+            var datasetConference = dataset.conference.toLowerCase();
+            var datasetYear = dataset.year.toString().toLowerCase();
+            var datasetTopics = dataset.topics.map(topic => topic.toLowerCase());
+              return (
+                datasetTitle.includes(filterValue) ||
+                datasetAuthors.some(author => author.includes(filterValue)) ||
+                datasetConference.includes(filterValue) ||
+                datasetYear.includes(filterValue) ||
+                datasetTopics.some(topic => topic.includes(filterValue))
+              );
+          })
+        : datasets.slice(); 
     for (let i = startIndex; i < endIndex && i < datasetsSize; i++) {
-        let dataset = datasets[i];
+        let dataset = filteredDatasets[i];
         var datasetContainer = document.createElement('div');
         datasetContainer.classList.add('dataset-container');
     
@@ -147,10 +168,13 @@ function handleIndicatorClick(event) {
     var targetPage = parseInt(event.target.textContent);
     if (targetPage !== currentPage) {
         currentPage = targetPage;
-
         updateActiveIndicator();
         showDatasets(currentPage, datasets);
     }
 }
+var searchBarInput = document.querySelector('.search-bar input');
+searchBarInput.addEventListener('input', function() {
+    showDatasets(currentPage, datasets);
+});
 
 getDataFromDatasets()
