@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="UTF-8">
+  <title>Your Page Title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Oráculo">
   <link rel="stylesheet" type="text/css" href="styles.css">
+  <script src="script.js"></script>
+  <!-- <link rel="icon" type="images/svg" href="Logo.svg"> -->
 </head>
 <body>
   <header>
@@ -17,5 +23,40 @@
     </nav>
     <hr>
   </header>
+
+  <main>
+    <section class="datasets-list">
+      <h1 class="dataset-list-title">Datasets</h1>
+
+      <div class="dataset-container">
+        <div class="dataset-title-container">
+          <h2 class="dataset-title">
+            Outdoor
+          </h2>
+          <button class="dataset-dropdown-button" type="button">
+            <img class="dataset-chevron" src="images/Chevron-Down.svg">
+          </button>
+        </div>
+        <div class="dataset-body">
+          <p class="dataset-description">
+            V. Losing, B. Hammer and H. Wersing, "Interactive online learning for obstacle classification on a mobile robot,"International Joint Conference on Neural Networks (IJCNN), 2015, pp. 1-8
+          </p>
+  
+          <div class="dataset-buttons-container">
+            <button class="dataset-button">
+              Download
+            </button>
+            <button class="dataset-button">
+              BIB
+            </button>
+            <button class="dataset-button">
+              ABNT
+            </button>
+          </div>
+        </div>
+      </div>
+      
+    </section>
+  </main>
 </body>
 </html>
