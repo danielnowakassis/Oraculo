@@ -5,6 +5,30 @@ var currentPage = 1;
 var pageIndicatorsContainer;
 var datasets;
 var currentDatasets;
+var darkMode = false
+
+var modeButton = document.querySelector('.mode');
+var modeIcon = document.querySelector('.right-image');
+var searchIcon = document.querySelector('.search-icon')
+var logo = document.querySelector('.left-image')
+var darkMode = false;
+
+modeButton.addEventListener('click', toggleMode);
+
+function toggleMode() {
+    var body = document.body;
+    body.classList.toggle('dark-mode');
+    
+    darkMode = !darkMode;
+  
+    var isDarkMode = body.classList.contains('dark-mode');
+    var iconSource = isDarkMode ? 'images/Sol.svg' : 'images/Lua.svg';
+    var searchIconSource = isDarkMode ? 'images/Search-Icon-White.svg' : 'images/Search-Icon.svg'
+    var logoSource = isDarkMode ? 'images/Logo-White.svg' : 'images/Logo.svg'
+    modeIcon.src = iconSource;
+    searchIcon.src = searchIconSource;
+    logo.src = logoSource;
+}
 
 function getDataFromDatasets(){
     return fetch('datasets.json')
