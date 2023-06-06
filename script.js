@@ -4,14 +4,16 @@ var datasetsSize;
 var currentPage = 1;
 var pageIndicatorsContainer;
 var datasets;
+var currentDatasets;
 
 function getDataFromDatasets(){
     return fetch('datasets.json')
         .then(response => response.json())
         .then(data => {
         datasets = data
-        populateDatasetList(datasets);
-        showDatasets(currentPage, datasets);
+        currentDatasets = datasets.slice()
+        populateDatasetList(currentDatasets);
+        showDatasets(currentPage, currentDatasets);
     })
         .catch(error => {
         console.error('Error:', error);
@@ -36,6 +38,9 @@ function populateDatasetList(datasets){
     datasetsSize = datasets.length;
     let totalPages = Math.ceil(datasetsSize / datasetsPerPage);
 
+        if (pageIndicatorsContainer) {
+        pageIndicatorsContainer.remove();
+    }
     pageIndicatorsContainer = document.createElement('div');
     pageIndicatorsContainer.classList.add('page-indicators');
 
@@ -65,7 +70,7 @@ function showDatasets(page, datasets) {
     datasetListTitle.textContent = 'Datasets';
     datasetsContainer.appendChild(datasetListTitle);
 
-    var startIndex = (page - 1) * datasetsPerPage;
+    var startIndex = (page - 1) * datasetsPerPage;  
     var endIndex = startIndex + datasetsPerPage;
 
     var searchBarInput = document.querySelector('.search-bar input');
@@ -87,9 +92,12 @@ function showDatasets(page, datasets) {
                 datasetTopics.some(topic => topic.includes(filterValue))
               );
           })
-        : datasets.slice(); 
-    for (let i = startIndex; i < endIndex && i < datasetsSize; i++) {
-        let dataset = filteredDatasets[i];
+        : datasets; 
+    
+    currentDatasets = filterValue ? filteredDatasets : datasets;
+        
+    for (let i = startIndex; i < endIndex && i < currentDatasets.length; i++) {
+        let dataset = currentDatasets[i];
         var datasetContainer = document.createElement('div');
         datasetContainer.classList.add('dataset-container');
     
@@ -169,12 +177,21 @@ function handleIndicatorClick(event) {
     if (targetPage !== currentPage) {
         currentPage = targetPage;
         updateActiveIndicator();
-        showDatasets(currentPage, datasets);
+        showDatasets(currentPage, currentDatasets);
     }
 }
 var searchBarInput = document.querySelector('.search-bar input');
 searchBarInput.addEventListener('input', function() {
-    showDatasets(currentPage, datasets);
+    currentPage = 1;
+    pageIndicatorsContainer.innerHTML = ""
+    if(searchBarInput.value.trim() === ""){
+        populateDatasetList(datasets)
+        showDatasets(currentPage, datasets);
+    }
+    else {
+        populateDatasetList(currentDatasets)
+        showDatasets(currentPage, currentDatasets);
+    }
 });
 
 getDataFromDatasets()

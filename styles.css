@@ -131,7 +131,7 @@ button {
 }
 
 .indicator-list li {
-  margin: 0 1em; /* Adjust the spacing between indicators */
+  margin: 0 1em;
   cursor: pointer;
 }
 
