@@ -151,6 +151,7 @@ button {
   color: var(--title-color);;
 }
 .dataset-button {
+  width: 4em;
   background: none;
   border: 1px solid var(--button-color);
   color: var(--button-color);;
@@ -185,4 +186,50 @@ button {
 
 .indicator-list li.active {
   color: var(--page-indicator-active);
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+    border:  none;
+  }
+
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .right-image {
+    display: none;
+  }
+
+  .search-bar {
+    width: 90%;
+    max-width: none;
+    margin-top: 1em;
+  }
+
+  .datasets-list {
+    width: 90%;
+    max-width: none;
+    margin-top: 2em;
+    margin-left: 0;
+  }
+
+  .dataset-title-container {
+    padding: 0.5em;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .dataset-buttons-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .dataset-button {
+    margin-top: 1em;
+  }
 }
