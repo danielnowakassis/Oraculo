@@ -1,4 +1,16 @@
 [ 
+  {
+    "authors": ["Elena Ikonomovska", "João Gama", "Sašo Džeroski"],
+    "title":"Airlines",
+    "conference":"Department of Knowledge Technologies",
+    "volume":"Volume 150",
+    "issue":"Volume 150",
+    "pages":"470",
+    "addinitionalInfo":"Online tree-based ensembles and option trees for regressionon evolving data streams",
+    "topics":["Online learning","Data streams","Online regression trees","Option trees","Online ensembles","Online random forests"],
+    "download":"https://www.sciencedirect.com/science/article/pii/S0925231214012338?via%3Dihub",
+    "year":"2014"
+  },
     {
       "authors": ["M. Harries", "University of New South Wales"],
       "title": "Elec",
@@ -10,215 +22,6 @@
       "topics": ["Classification", "Stream"],
       "download" : "https://maxhalford.github.io/files/datasets/electricity.zip",
       "year": 1999
-    },
-    {
-      "authors": ["Alice Johnson"],
-      "title": "Dataset B",
-      "conference": "Data Symposium",
-      "volume": "Vol. 2",
-      "issue": "Issue 5",
-      "pages": "30-40",
-      "additionalInfo": "Dataset B is a collection of climate data recorded from various weather stations worldwide.",
-      "topics": ["Climate", "Weather", "Environmental data"],
-      "year": 2019
-    },
-    {
-      "authors": ["Robert Anderson", "Emily Davis"],
-      "title": "Dataset C",
-      "conference": "International Data Summit",
-      "volume": "Vol. 3",
-      "issue": "Issue 2",
-      "pages": "50-60",
-      "additionalInfo": "The Dataset C is focused on analyzing sentiment in social media posts related to a specific topic.",
-      "topics": ["Sentiment analysis", "Social media", "Text mining"],
-      "year": 2020
-    },
-    {
-      "authors": ["Jessica Martinez"],
-      "title": "Dataset D",
-      "conference": "Big Data Conference",
-      "volume": "Vol. 4",
-      "issue": "Issue 1",
-      "pages": "70-80",
-      "additionalInfo": "Dataset D consists of historical stock prices for major companies in the finance sector.",
-      "topics": ["Finance", "Stock market", "Historical data"],
-      "year": 2018
-    },
-    {
-      "authors": ["Michael Johnson", "Sarah Thompson"],
-      "title": "Dataset E",
-      "conference": "Machine Learning Symposium",
-      "volume": "Vol. 5",
-      "issue": "Issue 4",
-      "pages": "90-100",
-      "additionalInfo": "Dataset E contains a collection of labeled images for training image recognition models.",
-      "topics": ["Image recognition", "Machine learning", "Computer vision"],
-      "year": 2021
-    },
-    {
-      "authors": ["David Wilson"],
-      "title": "Dataset F",
-      "conference": "Data Science Summit",
-      "volume": "Vol. 6",
-      "issue": "Issue 2",
-      "pages": "110-120",
-      "additionalInfo": "Dataset F includes information about historical earthquakes and their magnitudes worldwide.",
-      "topics": ["Earthquakes", "Seismic activity", "Geophysics"],
-      "year": 2017
-    },
-    {
-      "authors": ["Jennifer Lee", "Mark Thompson"],
-      "title": "Dataset G",
-      "conference": "Data Analytics Conference",
-      "volume": "Vol. 7",
-      "issue": "Issue 3",
-      "pages": "130-140",
-      "additionalInfo": "Dataset G comprises customer reviews and ratings for various products in an online marketplace.",
-      "topics": ["Customer reviews", "Sentiment analysis", "E-commerce"],
-      "year": 2023
-    },
-    {
-      "authors": ["Rachel Miller"],
-      "title": "Dataset H",
-      "conference": "Data Mining Conference",
-      "volume": "Vol. 8",
-      "issue": "Issue 4",
-      "pages": "150-160",
-      "additionalInfo": "Dataset H contains a collection of text documents for sentiment analysis and text classification.",
-      "topics": ["Text mining", "Sentiment analysis", "Natural language processing"],
-      "year": 2019
-    },
-    {
-      "authors": ["Daniel Brown", "Sophia Wilson"],
-      "title": "Dataset I",
-      "conference": "Artificial Intelligence Symposium",
-      "volume": "Vol. 9",
-      "issue": "Issue 1",
-      "pages": "170-180",
-      "additionalInfo": "Dataset I includes a large set of annotated images for object recognition tasks.",
-      "topics": ["Object recognition", "Artificial intelligence", "Deep learning"],
-      "year": 2022
-    },
-    {
-      "authors": ["Oliver Taylor"],
-      "title": "Dataset J",
-      "conference": "Data Visualization Conference",
-      "volume": "Vol. 10",
-      "issue": "Issue 2",
-      "pages": "190-200",
-      "additionalInfo": "Dataset J consists of data on worldwide energy consumption and production for visualizing trends.",
-      "topics": ["Data visualization", "Energy", "Trends"],
-      "year": 2020
-    },
-    {
-      "authors": ["Sophie Johnson"],
-      "title": "Dataset K",
-      "conference": "Data Warehousing Symposium",
-      "volume": "Vol. 11",
-      "issue": "Issue 3",
-      "pages": "210-220",
-      "additionalInfo": "Dataset K is a collection of customer transaction data for analyzing purchasing patterns.",
-      "topics": ["Data warehousing", "Customer behavior", "Transaction analysis"],
-      "year": 2021
-    },
-    {
-      "authors": ["Ethan Thompson", "Emma Davis"],
-      "title": "Dataset L",
-      "conference": "Data Engineering Conference",
-      "volume": "Vol. 12",
-      "issue": "Issue 4",
-      "pages": "230-240",
-      "additionalInfo": "Dataset L comprises network traffic data for analyzing and optimizing network performance.",
-      "topics": ["Network traffic", "Data engineering", "Network optimization"],
-      "year": 2018
-    },
-    {
-      "authors": ["Natalie Brown"],
-      "title": "Dataset M",
-      "conference": "Data Privacy Symposium",
-      "volume": "Vol. 13",
-      "issue": "Issue 2",
-      "pages": "250-260",
-      "additionalInfo": "Dataset M includes anonymized healthcare data for privacy-preserving analysis and research.",
-      "topics": ["Data privacy", "Healthcare", "Anonymization"],
-      "year": 2023
-    },
-    {
-      "authors": ["Samuel Wilson", "Olivia Miller"],
-      "title": "Dataset N",
-      "conference": "Data Security Conference",
-      "volume": "Vol. 14",
-      "issue": "Issue 1",
-      "pages": "270-280",
-      "additionalInfo": "Dataset N contains a collection of cybersecurity logs for analyzing and detecting security threats.",
-      "topics": ["Cybersecurity", "Data security", "Threat detection"],
-      "year": 2019
-    },
-    {
-      "authors": ["Ava Davis"],
-      "title": "Dataset O",
-      "conference": "Data Governance Symposium",
-      "volume": "Vol. 15",
-      "issue": "Issue 5",
-      "pages": "290-300",
-      "additionalInfo": "Dataset O comprises metadata about various datasets and their governance policies.",
-      "topics": ["Data governance", "Metadata", "Data management"],
-      "year": 2020
-    },
-    {
-      "authors": ["Benjamin Johnson", "Isabella Thompson"],
-      "title": "Dataset P",
-      "conference": "Data Integration Conference",
-      "volume": "Vol. 16",
-      "issue": "Issue 3",
-      "pages": "310-320",
-      "additionalInfo": "Dataset P includes data about online user behavior and website interactions.",
-      "topics": ["User behavior", "Web analytics", "Data integration"],
-      "year": 2022
-    },
-    {
-      "authors": ["Jacob Wilson"],
-      "title": "Dataset Q",
-      "conference": "Data Science Symposium",
-      "volume": "Vol. 17",
-      "issue": "Issue 2",
-      "pages": "330-340",
-      "additionalInfo": "Dataset Q consists of social media data for analyzing user sentiment and trends.",
-      "topics": ["Social media", "Sentiment analysis", "Trend analysis"],
-      "year": 2021
-    },
-    {
-      "authors": ["Emma Thompson", "William Davis"],
-      "title": "Dataset R",
-      "conference": "Machine Learning Conference",
-      "volume": "Vol. 18",
-      "issue": "Issue 4",
-      "pages": "350-360",
-      "additionalInfo": "Dataset R includes a collection of audio files and transcriptions for speech recognition.",
-      "topics": ["Speech recognition", "Machine learning", "Natural language processing"],
-      "year": 2017
-    },
-    {
-      "authors": ["Sophia Johnson"],
-      "title": "Dataset S",
-      "conference": "Data Analytics Symposium",
-      "volume": "Vol. 19",
-      "issue": "Issue 3",
-      "pages": "370-380",
-      "additionalInfo": "Dataset S comprises sensor data collected from IoT devices for analyzing environmental factors.",
-      "topics": ["IoT", "Sensor data", "Environmental analysis"],
-      "year": 2023
-    },
-    {
-      "authors": ["Daniel Wilson"],
-      "title": "Dataset T",
-      "conference": "Big Data Symposium",
-      "volume": "Vol. 20",
-      "issue": "Issue 1",
-      "pages": "390-400",
-      "additionalInfo": "Dataset T contains a large collection of customer transaction data for fraud detection.",
-      "topics": ["Fraud detection", "Customer behavior", "Transaction analysis"],
-      "year": 2022
     }
 ]
   

@@ -151,12 +151,16 @@ function populateDatasets(startIndex, endIndex, currentDatasets){
     
         let buttonsContainer = document.createElement('div');
         buttonsContainer.classList.add('dataset-buttons-container');
+
+        let downloadAnchor = document.createElement('a');
+        downloadAnchor.href = dataset.download;
     
         let downloadButton = document.createElement('button');
         downloadButton.classList.add('dataset-button');
         downloadButton.textContent = 'Download';
-        downloadButton.href = dataset.download;
-    
+
+        downloadAnchor.appendChild(downloadButton);
+
         let bibButton = document.createElement('button');
         bibButton.classList.add('dataset-button');
         bibButton.textContent = 'BIB';
@@ -172,7 +176,7 @@ function populateDatasets(startIndex, endIndex, currentDatasets){
     
         datasetBody.appendChild(datasetDescription);
     
-        buttonsContainer.appendChild(downloadButton);
+        buttonsContainer.appendChild(downloadAnchor);
         buttonsContainer.appendChild(bibButton);
         buttonsContainer.appendChild(abntButton);
     
@@ -195,7 +199,6 @@ function populateDatasets(startIndex, endIndex, currentDatasets){
         });
     };
 }
-
 
 function updateActiveIndicator() {
     var indicators = pageIndicatorsContainer.querySelectorAll('.indicator-list li');
