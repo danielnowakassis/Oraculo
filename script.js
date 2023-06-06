@@ -155,6 +155,7 @@ function populateDatasets(startIndex, endIndex, currentDatasets){
         let downloadButton = document.createElement('button');
         downloadButton.classList.add('dataset-button');
         downloadButton.textContent = 'Download';
+        downloadButton.href = dataset.download;
     
         let bibButton = document.createElement('button');
         bibButton.classList.add('dataset-button');
