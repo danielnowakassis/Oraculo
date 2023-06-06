@@ -132,7 +132,7 @@ function populateDatasets(startIndex, endIndex, currentDatasets){
     
         let datasetTitle = document.createElement('h2');
         datasetTitle.classList.add('dataset-title');
-        datasetTitle.textContent = dataset.title;
+        datasetTitle.textContent = dataset.dataset_name;
     
         let dropdownButton = document.createElement('button');
         dropdownButton.classList.add('dataset-dropdown-button');

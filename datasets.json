@@ -1,19 +1,21 @@
 [ 
   {
     "authors": ["Elena Ikonomovska", "João Gama", "Sašo Džeroski"],
-    "title":"Airlines",
+    "dataset_name" : "Airlines", 
+    "title":"Online tree-based ensembles and option trees for regression on evolving data streams",
     "conference":"Department of Knowledge Technologies",
     "volume":"Volume 150",
     "issue":"Volume 150",
     "pages":"470",
-    "addinitionalInfo":"Online tree-based ensembles and option trees for regressionon evolving data streams",
+    "addinitionalInfo":"Online tree-based ensembles and option trees for regression on evolving data streams",
     "topics":["Online learning","Data streams","Online regression trees","Option trees","Online ensembles","Online random forests"],
     "download":"https://www.sciencedirect.com/science/article/pii/S0925231214012338?via%3Dihub",
     "year":"2014"
   },
     {
       "authors": ["M. Harries", "University of New South Wales"],
-      "title": "Elec",
+      "dataset_name" : "Elec",
+      "title": "Splice-2 Comparative Evaluation: Electricity Pricing.",
       "conference": "technical_report",
       "volume": "no_vol",
       "issue": "no_vol",
