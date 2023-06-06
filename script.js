@@ -138,7 +138,7 @@ function showDatasets(page, datasets) {
     
         var chevronIcon = document.createElement('img');
         chevronIcon.classList.add('dataset-chevron');
-        chevronIcon.setAttribute('src', 'images/Chevron-Down.svg');
+        chevronIcon.setAttribute('src', 'images/Chevron-Up.svg');
     
         var datasetBody = document.createElement('div');
         datasetBody.classList.add('dataset-body');
@@ -183,6 +183,12 @@ function showDatasets(page, datasets) {
         dropdownButton.addEventListener('click', function () {
             var div = this.parentNode.nextElementSibling;
             div.classList.toggle('hidden');
+
+            var chevronIcon = this.querySelector('.dataset-chevron');
+            var isHidden = div.classList.contains('hidden');
+            var iconSource = isHidden ? 'images/Chevron-Down.svg' : 'images/Chevron-Up.svg';
+                
+            chevronIcon.setAttribute('src', iconSource);
         });
     };
 }
