@@ -34,7 +34,7 @@ function getDataFromDatasets(){
     return fetch('datasets.json')
         .then(response => response.json())
         .then(data => {
-        datasets = data
+        datasets = data.slice()
         currentDatasets = datasets.slice()
         populateDatasetList(currentDatasets);
         showDatasets(currentPage, currentDatasets);
@@ -85,29 +85,19 @@ function populateDatasetList(datasets){
 }
 
 function showDatasets(page, datasets) {
-    var datasetsContainer = document.querySelector('.datasets-list');
+    let startIndex = (page - 1) * datasetsPerPage;  
+    let endIndex = startIndex + datasetsPerPage;
 
-    datasetsContainer.innerHTML = "";
+    let searchBarInput = document.querySelector('.search-bar input');
+    let filterValue = searchBarInput.value.toLowerCase();
 
-    var datasetListTitle = document.createElement('h1');
-    datasetListTitle.classList.add('dataset-list-title');
-    datasetListTitle.textContent = 'Datasets';
-    datasetsContainer.appendChild(datasetListTitle);
-
-    var startIndex = (page - 1) * datasetsPerPage;  
-    var endIndex = startIndex + datasetsPerPage;
-
-    var searchBarInput = document.querySelector('.search-bar input');
-
-    var filterValue = searchBarInput.value.toLowerCase();
-
-    var filteredDatasets = filterValue
+    let filteredDatasets = filterValue
         ? datasets.filter(function(dataset) {
-            var datasetTitle = dataset.title.toLowerCase();
-            var datasetAuthors = dataset.authors.map(author => author.toLowerCase());
-            var datasetConference = dataset.conference.toLowerCase();
-            var datasetYear = dataset.year.toString().toLowerCase();
-            var datasetTopics = dataset.topics.map(topic => topic.toLowerCase());
+            let datasetTitle = dataset.title.toLowerCase();
+            let datasetAuthors = dataset.authors.map(author => author.toLowerCase());
+            let datasetConference = dataset.conference.toLowerCase();
+            let datasetYear = dataset.year.toString().toLowerCase();
+            let datasetTopics = dataset.topics.map(topic => topic.toLowerCase());
               return (
                 datasetTitle.includes(filterValue) ||
                 datasetAuthors.some(author => author.includes(filterValue)) ||
@@ -118,47 +108,59 @@ function showDatasets(page, datasets) {
           })
         : datasets; 
     
-    currentDatasets = filterValue ? filteredDatasets : datasets;
+    currentDatasets = filteredDatasets
+
+    populateDatasets(startIndex, endIndex, currentDatasets)
+}
+function populateDatasets(startIndex, endIndex, currentDatasets){
+    let datasetsContainer = document.querySelector('.datasets-list');
+
+    datasetsContainer.innerHTML = "";
+
+    let datasetListTitle = document.createElement('h1');
+    datasetListTitle.classList.add('dataset-list-title');
+    datasetListTitle.textContent = 'Datasets';
+    datasetsContainer.appendChild(datasetListTitle);
         
     for (let i = startIndex; i < endIndex && i < currentDatasets.length; i++) {
         let dataset = currentDatasets[i];
-        var datasetContainer = document.createElement('div');
+        let datasetContainer = document.createElement('div');
         datasetContainer.classList.add('dataset-container');
     
-        var titleContainer = document.createElement('div');
+        let titleContainer = document.createElement('div');
         titleContainer.classList.add('dataset-title-container');
     
-        var datasetTitle = document.createElement('h2');
+        let datasetTitle = document.createElement('h2');
         datasetTitle.classList.add('dataset-title');
         datasetTitle.textContent = dataset.title;
     
-        var dropdownButton = document.createElement('button');
+        let dropdownButton = document.createElement('button');
         dropdownButton.classList.add('dataset-dropdown-button');
         dropdownButton.setAttribute('type', 'button');
     
-        var chevronIcon = document.createElement('img');
+        let chevronIcon = document.createElement('img');
         chevronIcon.classList.add('dataset-chevron');
         chevronIcon.setAttribute('src', 'images/Chevron-Up.svg');
     
-        var datasetBody = document.createElement('div');
+        let datasetBody = document.createElement('div');
         datasetBody.classList.add('dataset-body');
     
-        var datasetDescription = document.createElement('p');
+        let datasetDescription = document.createElement('p');
         datasetDescription.classList.add('dataset-description');
         datasetDescription.textContent = dataset.authors.join(', ') + ', "' + dataset.title + '",' + dataset.conference + ', ' + dataset.year + ', pp. ' + dataset.pages;
     
-        var buttonsContainer = document.createElement('div');
+        let buttonsContainer = document.createElement('div');
         buttonsContainer.classList.add('dataset-buttons-container');
     
-        var downloadButton = document.createElement('button');
+        let downloadButton = document.createElement('button');
         downloadButton.classList.add('dataset-button');
         downloadButton.textContent = 'Download';
     
-        var bibButton = document.createElement('button');
+        let bibButton = document.createElement('button');
         bibButton.classList.add('dataset-button');
         bibButton.textContent = 'BIB';
     
-        var abntButton = document.createElement('button');
+        let abntButton = document.createElement('button');
         abntButton.classList.add('dataset-button');
         abntButton.textContent = 'ABNT';
     
@@ -181,12 +183,12 @@ function showDatasets(page, datasets) {
         datasetsContainer.appendChild(datasetContainer);
 
         dropdownButton.addEventListener('click', function () {
-            var div = this.parentNode.nextElementSibling;
+            let div = this.parentNode.nextElementSibling;
             div.classList.toggle('hidden');
 
-            var chevronIcon = this.querySelector('.dataset-chevron');
-            var isHidden = div.classList.contains('hidden');
-            var iconSource = isHidden ? 'images/Chevron-Down.svg' : 'images/Chevron-Up.svg';
+            let chevronIcon = this.querySelector('.dataset-chevron');
+            let isHidden = div.classList.contains('hidden');
+            let iconSource = isHidden ? 'images/Chevron-Down.svg' : 'images/Chevron-Up.svg';
                 
             chevronIcon.setAttribute('src', iconSource);
         });
