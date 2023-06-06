@@ -1,14 +1,15 @@
-[
+[ 
     {
-      "authors": ["John Doe", "Jane Smith"],
-      "title": "Dataset A",
-      "conference": "Data Conference 2023",
-      "volume": "Vol. 1",
-      "issue": "Issue 3",
-      "pages": "10-20",
-      "additionalInfo": "This dataset contains information about user demographics and their purchasing behavior.",
-      "topics": ["User behavior", "Demographics", "Purchasing"],
-      "year": 2022
+      "authors": ["M. Harries", "University of New South Wales"],
+      "title": "Elec",
+      "conference": "technical_report",
+      "volume": "no_vol",
+      "issue": "no_vol",
+      "pages": "no_pag",
+      "additionalInfo": "Splice-2 Comparative Evaluation: Electricity Pricing.",
+      "topics": ["Classification", "Stream"],
+      "download" : "https://maxhalford.github.io/files/datasets/electricity.zip",
+      "year": 1999
     },
     {
       "authors": ["Alice Johnson"],
