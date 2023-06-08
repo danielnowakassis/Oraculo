@@ -48,6 +48,10 @@ button {
   all: unset;
 }
 
+a {
+  text-decoration: none;
+}
+
 .container {
   display: flex;
   align-items: center;
