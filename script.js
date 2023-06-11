@@ -214,6 +214,7 @@ function handleIndicatorClick(event) {
         currentPage = targetPage;
         updateActiveIndicator();
         showDatasets(currentPage, currentDatasets);
+        window.scrollTo(0, 0);
     }
 }
 var searchBarInput = document.querySelector('.search-bar input');
