@@ -166,6 +166,12 @@ a {
   display: none;
 }
 
+.reference-card-bib, .reference-card-abnt {
+  background-color: var(--dataset-background);
+  padding: 1em;
+  margin-top: 0.5em;
+}
+
 .page-indicators {
   display: flex;
   justify-content: center;

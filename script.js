@@ -64,6 +64,67 @@ function generateIEEEReference(dataset) {
     return reference;
 }
 
+function generateBIBReference(dataset) {
+    var reference = "@inproceedings{" + dataset.dataset_name + ",\n";
+    reference += "  author = {" + dataset.authors.join(" and ") + "},\n";
+    reference += "  title = {" + dataset.title + "},\n";
+    reference += "  booktitle = {" + dataset.conference + ", " + dataset.volume + ", " + dataset.issue + ", " + dataset.pages + "},\n";
+    reference += "  year = {" + dataset.year + "},\n";
+    reference += "}";
+  
+    return reference;
+  }
+  function generateABNTReference(dataset) {
+    var reference = '';
+  
+    var authors = formatAuthorsABNT(dataset.authors);
+    reference += authors + '. ';
+  
+    var title = dataset.title + '.';
+    reference += title + ' ';
+  
+    if (dataset.conference) {
+      reference += dataset.conference + ', ';
+    }
+  
+    if (dataset.volume) {
+      reference += 'v. ' + dataset.volume + ', ';
+    }
+  
+    if (dataset.issue) {
+      reference += 'n. ' + dataset.issue + ', ';
+    }
+  
+    if (dataset.pages) {
+      reference += 'p. ' + dataset.pages + '. ';
+    }
+  
+    if (dataset.additionalInfo) {
+      reference += dataset.additionalInfo + '. ';
+    }
+  
+    reference += 'Disponível em: ' + dataset.download + '. ';
+  
+    reference += dataset.year + '.';
+  
+    return reference;
+  }
+  
+  function formatAuthorsABNT(authors) {
+    var formattedAuthors = [];
+    for (var i = 0; i < authors.length; i++) {
+      var author = authors[i];
+      var parts = author.split(' ');
+      var lastName = parts[parts.length - 1].toUpperCase();
+      var initials = parts.slice(0, parts.length - 1).map(function(part) {
+        return part.charAt(0).toUpperCase() + '.';
+      });
+      var formattedAuthor = lastName + ', ' + initials.join(' ');
+      formattedAuthors.push(formattedAuthor);
+    }
+    return formattedAuthors.join(', ');
+  }
+  
 function populateDatasetList(datasets){
     datasetsSize = datasets.length;
     let totalPages = Math.ceil(datasetsSize / datasetsPerPage);
@@ -193,6 +254,12 @@ function populateDatasets(startIndex, endIndex, currentDatasets){
     
         datasetsContainer.appendChild(datasetContainer);
 
+        let bibCard = showReferenceBIBCard(dataset);
+        let abntCard = showReferenceABNTCard(dataset);
+
+        datasetContainer.appendChild(bibCard);
+        datasetContainer.appendChild(abntCard);
+
         dropdownButton.addEventListener('click', function () {
             let div = this.parentNode.nextElementSibling;
             div.classList.toggle('hidden');
@@ -203,9 +270,44 @@ function populateDatasets(startIndex, endIndex, currentDatasets){
                 
             chevronIcon.setAttribute('src', iconSource);
         });
+
+        bibButton.addEventListener('click', function () {
+            let referenceCard = this.parentNode.parentNode.parentNode.querySelector('.reference-card-bib');
+            referenceCard.classList.toggle('hidden');
+        });
+
+        abntButton.addEventListener('click', function () {
+            let referenceCard = this.parentNode.parentNode.parentNode.querySelector('.reference-card-abnt');
+            referenceCard.classList.toggle('hidden');
+        });
     };
 }
 
+function showReferenceBIBCard(dataset) {
+    let card = document.createElement('div');
+    card.classList.add('reference-card-bib');
+  
+    let referenceText = document.createElement('p');
+    referenceText.textContent = generateBIBReference(dataset);
+  
+    card.appendChild(referenceText);
+    card.classList.add('hidden');
+  
+    return card;
+  }
+
+function showReferenceABNTCard(dataset) {
+    let card = document.createElement('div');
+    card.classList.add('reference-card-abnt');
+
+    let referenceText = document.createElement('p');
+    referenceText.textContent = generateABNTReference(dataset);
+
+    card.appendChild(referenceText);
+    card.classList.add('hidden');
+
+    return card;
+}
 function updateActiveIndicator() {
     var indicators = pageIndicatorsContainer.querySelectorAll('.indicator-list li');
     indicators.forEach(function (indicator) {
