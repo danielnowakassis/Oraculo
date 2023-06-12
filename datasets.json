@@ -101,12 +101,12 @@
         "pages": "1805–1858",
         "additionalInfo": "",
         "topics": ["Classification", "Stream"],
-        "download" : "http://sites.labic.icmc.usp.br/vsouza/repository/creme/INSECTS-gradual_imbalanced_norm.arff",
+        "download" : "http://sites.labic.icmc.usp.br/vsouza/repository/creme/INSECTS-incremental-abrupt_imbalanced_norm.arff",
         "year": 2020
       },
       {
         "authors": ["V. Souza", " D.M.D. Reis", "A.G. Maletzke", "G.E. Batista"],
-        "dataset_name" : "Insects (incremental-abrupt imbalanced)",
+        "dataset_name" : "Insects (incremental-reoccurring balanced)",
         "title": "Challenges in Benchmarking Stream Learning Algorithms with Real-world Data",
         "conference": "Data Min Knowl Disc",
         "volume": "34",
@@ -119,7 +119,7 @@
       },
       {
         "authors": ["V. Souza", " D.M.D. Reis", "A.G. Maletzke", "G.E. Batista"],
-        "dataset_name" : "Insects (incremental-abrupt imbalanced)",
+        "dataset_name" : "Insects (incremental-reoccurring imbalanced)",
         "title": "Challenges in Benchmarking Stream Learning Algorithms with Real-world Data",
         "conference": "Data Min Knowl Disc",
         "volume": "34",
