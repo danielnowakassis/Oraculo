@@ -41,7 +41,7 @@ function getDataFromDatasets(){
         .then(response => response.json())
         .then(data => {
         datasets = data.slice()
-        currentDatasets = datasets.slice()
+        currentDatasets = data.slice()
         populateDatasetList(currentDatasets);
         showDatasets(currentPage, currentDatasets);
     })
@@ -68,12 +68,32 @@ function generateBIBReference(dataset) {
     var reference = "@inproceedings{" + dataset.dataset_name + ",\n";
     reference += "  author = {" + dataset.authors.join(" and ") + "},\n";
     reference += "  title = {" + dataset.title + "},\n";
-    reference += "  booktitle = {" + dataset.conference + ", " + dataset.volume + ", " + dataset.issue + ", " + dataset.pages + "},\n";
+    
+    if (dataset.conference) {
+      reference += "  booktitle = {" + dataset.conference;
+      
+      if (dataset.volume) {
+        reference += ", " + dataset.volume;
+      }
+      
+      if (dataset.pages) {
+        reference += ", " + dataset.pages;
+      }
+      
+      reference += "},\n";
+    }
+    
     reference += "  year = {" + dataset.year + "},\n";
+    
+    if (dataset.additionalInfo) {
+      reference += "  note = {" + dataset.additionalInfo + "},\n";
+    }
+    
     reference += "}";
-  
+    
     return reference;
   }
+  
   function generateABNTReference(dataset) {
     var reference = '';
   
@@ -89,10 +109,6 @@ function generateBIBReference(dataset) {
   
     if (dataset.volume) {
       reference += 'v. ' + dataset.volume + ', ';
-    }
-  
-    if (dataset.issue) {
-      reference += 'n. ' + dataset.issue + ', ';
     }
   
     if (dataset.pages) {
@@ -148,36 +164,41 @@ function populateDatasetList(datasets){
     pageIndicatorsContainer.appendChild(indicatorList);
     mainContainer.appendChild(pageIndicatorsContainer);
     updateActiveIndicator();
-    showDatasets(currentPage, datasets);
+    showDatasets(currentPage);
 }
 
-function showDatasets(page, datasets) {
+function showDatasets(page) {
     let startIndex = (page - 1) * datasetsPerPage;  
     let endIndex = startIndex + datasetsPerPage;
 
     let searchBarInput = document.querySelector('.search-bar input');
-    let filterValue = searchBarInput.value.toLowerCase();
+    let filterValue = searchBarInput.value.trim().toLowerCase();
 
-    let filteredDatasets = filterValue
-        ? datasets.filter(function(dataset) {
-            let datasetTitle = dataset.title.toLowerCase();
-            let datasetAuthors = dataset.authors.map(author => author.toLowerCase());
-            let datasetConference = dataset.conference.toLowerCase();
-            let datasetYear = dataset.year.toString().toLowerCase();
-            let datasetTopics = dataset.topics.map(topic => topic.toLowerCase());
-              return (
-                datasetTitle.includes(filterValue) ||
-                datasetAuthors.some(author => author.includes(filterValue)) ||
-                datasetConference.includes(filterValue) ||
-                datasetYear.includes(filterValue) ||
-                datasetTopics.some(topic => topic.includes(filterValue))
-              );
-          })
-        : datasets; 
-    
-    currentDatasets = filteredDatasets
-
+    filterDatasets(filterValue)
     populateDatasets(startIndex, endIndex, currentDatasets)
+}
+
+function filterDatasets(filterValue){
+    let filteredDatasets = filterValue
+    ? datasets.filter(function(dataset) {
+        let datasetTitle = dataset.title.toLowerCase();
+        let datasetAuthors = dataset.authors.map(author => author.toLowerCase());
+        let datasetConference = dataset.conference.toLowerCase();
+        let datasetYear = dataset.year.toString().toLowerCase();
+        let datasetTopics = dataset.topics.map(topic => topic.toLowerCase());
+        let datasetDescription = dataset.description.toLowerCase();
+          return (
+            datasetTitle.includes(filterValue) ||
+            datasetAuthors.some(author => author.includes(filterValue)) ||
+            datasetConference.includes(filterValue) ||
+            datasetYear.includes(filterValue) ||
+            datasetTopics.some(topic => topic.includes(filterValue)) ||
+            datasetDescription.includes(filterValue)
+          );
+      })
+    : datasets; 
+
+    currentDatasets = filteredDatasets
 }
 function populateDatasets(startIndex, endIndex, currentDatasets){
     let datasetsContainer = document.querySelector('.datasets-list');
@@ -199,7 +220,7 @@ function populateDatasets(startIndex, endIndex, currentDatasets){
     
         let datasetTitle = document.createElement('h2');
         datasetTitle.classList.add('dataset-title');
-        datasetTitle.textContent = dataset.dataset_name;
+        datasetTitle.textContent = dataset.title;
     
         let dropdownButton = document.createElement('button');
         dropdownButton.classList.add('dataset-dropdown-button');
@@ -214,12 +235,8 @@ function populateDatasets(startIndex, endIndex, currentDatasets){
     
         let datasetDescription = document.createElement('p');
         datasetDescription.classList.add('dataset-description');
-        datasetDescription.style.cursor = 'pointer';
-        datasetDescription.textContent = dataset.authors.join(', ') + ', "' + dataset.title + '",' + dataset.conference + ', ' + dataset.year + ', pp. ' + dataset.pages;
-    
-        datasetDescription.addEventListener('click', (event) => {
-            copyTextToClipboard(event.target.textContent);
-        });
+
+        datasetDescription.textContent = dataset.description;
 
         let buttonsContainer = document.createElement('div');
         buttonsContainer.classList.add('dataset-buttons-container');
