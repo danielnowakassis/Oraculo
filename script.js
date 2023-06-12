@@ -269,16 +269,39 @@ function populateDatasets(startIndex, endIndex, currentDatasets){
             let iconSource = isHidden ? 'images/Chevron-Down.svg' : 'images/Chevron-Up.svg';
                 
             chevronIcon.setAttribute('src', iconSource);
+
+            if(isHidden){
+                bibButton.classList.remove('selected');
+                abntButton.classList.remove('selected');
+            }
+
+            let referenceCards = datasetContainer.querySelectorAll('.reference-card-bib, .reference-card-abnt');
+            referenceCards.forEach(function(card) {
+                card.classList.add('hidden');
+            });
+
         });
 
         bibButton.addEventListener('click', function () {
             let referenceCard = this.parentNode.parentNode.parentNode.querySelector('.reference-card-bib');
             referenceCard.classList.toggle('hidden');
+
+            bibButton.classList.toggle('selected');
+            abntButton.classList.remove('selected');
+
+            let abntCard = this.parentNode.parentNode.parentNode.querySelector('.reference-card-abnt');
+            abntCard.classList.add('hidden');
         });
 
         abntButton.addEventListener('click', function () {
             let referenceCard = this.parentNode.parentNode.parentNode.querySelector('.reference-card-abnt');
             referenceCard.classList.toggle('hidden');
+
+            abntButton.classList.toggle('selected');
+            bibButton.classList.remove('selected');
+
+            let bibCard = this.parentNode.parentNode.parentNode.querySelector('.reference-card-bib');
+            bibCard.classList.add('hidden');
         });
     };
 }

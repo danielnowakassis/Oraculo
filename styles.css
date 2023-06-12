@@ -1,5 +1,6 @@
 /* font-family: 'BlinkMacSystemFont'; */
 :root {
+  --button-selected: #000;
   --background-color: #fff;
   --text-color: #7C7C7C;
   --searchbar-background: #EFEFEF;
@@ -17,6 +18,7 @@
 }
 
 .dark-mode {
+  --button-selected: #EFEFEF;
   --background-color: #282828;
   --text-color: #EFEFEF;
   --searchbar-background: #404040;
@@ -162,6 +164,11 @@ a {
   padding: 0.75em 2em;
   margin-right: 1.2em;
 }
+
+.dataset-button.selected {
+  color: var(--button-selected);
+  border-color: var(--button-selected);
+}
 .hidden {
   display: none;
 }
@@ -170,6 +177,7 @@ a {
   background-color: var(--dataset-background);
   padding: 1em;
   margin-top: 0.5em;
+  color: var(--text-color)
 }
 
 .page-indicators {
