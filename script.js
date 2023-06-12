@@ -214,8 +214,13 @@ function populateDatasets(startIndex, endIndex, currentDatasets){
     
         let datasetDescription = document.createElement('p');
         datasetDescription.classList.add('dataset-description');
+        datasetDescription.style.cursor = 'pointer';
         datasetDescription.textContent = dataset.authors.join(', ') + ', "' + dataset.title + '",' + dataset.conference + ', ' + dataset.year + ', pp. ' + dataset.pages;
     
+        datasetDescription.addEventListener('click', (event) => {
+            copyTextToClipboard(event.target.textContent);
+        });
+
         let buttonsContainer = document.createElement('div');
         buttonsContainer.classList.add('dataset-buttons-container');
 
@@ -312,6 +317,11 @@ function showReferenceBIBCard(dataset) {
   
     let referenceText = document.createElement('p');
     referenceText.textContent = generateBIBReference(dataset);
+    referenceText.style.cursor = 'pointer';
+
+    referenceText.addEventListener('click', (event) => {
+        copyTextToClipboard(event.target.textContent);
+    });
   
     card.appendChild(referenceText);
     card.classList.add('hidden');
@@ -325,12 +335,41 @@ function showReferenceABNTCard(dataset) {
 
     let referenceText = document.createElement('p');
     referenceText.textContent = generateABNTReference(dataset);
+    referenceText.style.cursor = 'pointer';
+
+    referenceText.addEventListener('click', (event) => {
+        copyTextToClipboard(event.target.textContent);
+    });
 
     card.appendChild(referenceText);
     card.classList.add('hidden');
 
     return card;
 }
+
+function copyTextToClipboard(text) {
+    navigator.clipboard.writeText(text)
+      .then(() => {
+        const message = document.createElement('div');
+        message.textContent = 'Text copied to clipboard';
+        message.classList.add('copy-message');
+        document.body.appendChild(message);
+  
+        setTimeout(() => {
+            message.classList.add('show');
+            setTimeout(() => {
+              document.body.removeChild(message);
+            }, 2000);
+          }, 100);
+  
+        console.log('Text copied to clipboard:', text);
+      })
+      .catch((error) => {
+        console.error('Unable to copy text to clipboard:', error);
+      });
+  }
+  
+
 function updateActiveIndicator() {
     var indicators = pageIndicatorsContainer.querySelectorAll('.indicator-list li');
     indicators.forEach(function (indicator) {
