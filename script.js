@@ -65,7 +65,7 @@ function generateIEEEReference(dataset) {
 }
 
 function generateBIBReference(dataset) {
-    var reference = "@inproceedings{" + dataset.dataset_name + ",\n";
+    var reference = "@inproceedings{" + dataset.title + ",\n";
     reference += "  author = {" + dataset.authors.join(" and ") + "},\n";
     reference += "  title = {" + dataset.title + "},\n";
     
