@@ -120,5 +120,16 @@
     "topics": ["Classification", "Stream"],
     "download" : "http://sites.labic.icmc.usp.br/vsouza/repository/creme/INSECTS-out-of-control_norm.arff",
     "year": 2020
+  },
+  {
+    "authors": ["Stony Brook University"],
+    "title": "KDD",
+    "description" : "KDD competition",
+    "conference": "",
+    "volume": "",
+    "pages": "",
+    "topics": ["Classification", "Stream", "Anomaly Detection"],
+    "download" : "https://maxhalford.github.io/files/datasets/kdd99_http.zip",
+    "year": 1999
   }
 ]
